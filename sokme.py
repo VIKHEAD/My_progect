@@ -5,6 +5,7 @@ import os
 
 import xlsxwriter
 from bs4 import BeautifulSoup
+from requests.adapters import HTTPAdapter
 
 URL = 'https://sokme.ua/shop/'
 HEADERS = {
@@ -13,14 +14,18 @@ HEADERS = {
     'accept': '*/*'}
 FOLDER = 'D:/sokme'
 
+adapter = HTTPAdapter(max_retries=3)
+session = requests.Session()
+
 
 def main():
     name_dir, url = get_category()
     html = get_html(url)
     get_url_item(name_dir, html)
 
-def get_html(url, params=None):
-    r = requests.get(url, headers=HEADERS, params=params)
+def get_html(url):
+    session.mount(url, adapter)
+    r = session.get(url, headers=HEADERS)
     soup = BeautifulSoup(r.text, 'html.parser')
     time.sleep(8)
     if soup:
