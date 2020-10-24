@@ -20,12 +20,12 @@ category = {}
 def welcome(message):
     sti = open('C:/Users/nebop/PycharmProjects/pythonProject/My_progect/BatmanComics_023.webp', 'rb')
     bot.send_sticker(message.chat.id, sti)
-    bot.send_message(message.chat.id, f"<b>Здороу був :-) {message.from_user.first_name} </b> \nКажи що хтівмсь...", parse_mode='html')
+    bot.send_message(message.chat.id, f"<b>Здороу був :-) {message.from_user.first_name} </b> \nКажи що хтівмсь...",
+                     parse_mode='html')
 
 
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
-
     if message.text.lower() == 'так' and 'хочу':
         bot.send_message(message.chat.id, "Вибирай з якоу категорії")
         html = get_html(URL)
@@ -49,19 +49,8 @@ def get_text_messages(message):
         bot.send_sticker(message.chat.id, sti2)
         bot.send_message(message.chat.id, "Я умиваюсь звідсика поки поштарка Оксана не прийшла.....")
     elif message.text:
-        bot.send_message(message.chat.id, f"Ніц не можу помочи {message.from_user.first_name}\n Можу дати лише катринку... Хоч?\n инструкция проста Так, Ні, Папа...")
-
-#
-# @bot.callback_query_handler(func=lambda call: True)
-# def callback_message(call):
-#     print("Єівкеинрвке")
-#     try:
-#
-#     except Exception as e:
-#         print(repr(e))
-
-
-
+        bot.send_message(message.chat.id,
+                         f"Ніц не можу помочи {message.from_user.first_name}\n Можу дати лише катринку... Хоч?\n инструкция проста Так, Ні, Папа...")
 
 
 @bot.callback_query_handler(func=lambda call: True)
@@ -72,7 +61,6 @@ def callback_inline(call):
             html = get_html(url)
             image = get_images(html, url)
             bot.send_photo(call.message.chat.id, image)
-
     except Exception as e:
         print(repr(e))
 
