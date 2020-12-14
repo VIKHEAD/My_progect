@@ -10,11 +10,10 @@ from scp import SCPClient
 
 FOLDER_EXCEL = "D:/DOWN/MiroMark/miromark.xlsx"
 FOLDER_PRODUCT = "D:/DOWN/MiroMark/Спальні"
-REMOTH_PATH = 'mebli-local.com.ua/www/storage/app/public/img/'
+REMOTH_PATH = '/////'
 
-host = ('xi400102.ftp.tools', 'xi400102', '2!bT~i3S')
-connect_database = ('xi400102_db', 'gUMq7g9G', 'xi400102.mysql.tools', 'xi400102_db')
-# connect_database = ("root", "root", "127.0.0.1", "mebli-site")
+host = ('-----', '-----', '------')
+connect_database = ('------', '-------', '------', '-------')
 
 list_images = []
 image_mass = []
